@@ -11,24 +11,68 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        self.vertices[vertex] = set()
+
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        if v1 not in self.vertices:
+            self.add_vertex(v1)
+        
+        if v2 not in self.vertices:
+            self.add_vertex(v2)
+        
+        self.vertices[v1].add(v2)
+        
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # make a queue
+        queue = Queue()
+        # make a visited set
+        visited = set()
+        # put starting vertex in the queue
+        queue.enqueue(starting_vertex)
+        # while q isn't empty
+        while queue.size():
+            # dequeue the item, it is our current item
+            node = queue.dequeue()
+            # mark current as visited
+            visited.add(node)
+            # for each of the dequeued item's edge
+            for edge in self.vertices[node]:
+                 # if not visited
+                 if edge not in visited:
+                    # put them in the queue
+                    queue.enqueue(edge)
+        
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # make a stack
+        stack = Stack()
+        # make a visited set
+        visited = set()
+        # put starting vertex in our stack
+        stack.push(starting_vertex)
+        # while the stack isn't empty
+        while stack.size():
+            # pop off the top of the stack, it is our current item
+            node = stack.pop()
+            # if not visited
+            if node not in visited:
+                # mark it as visited
+                visited.add(node)
+                # for each of our current item's edges
+                for edge in self.vertices(node):
+                    # put them on the stack
+                    stack.push(edge)
+
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
@@ -42,7 +86,26 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        # make a queue
+        q = Queue()
+        # make a visited set
+        visited = ()
+        # put our starting vertex in the queue
+        q.enqueue(starting_vertex)
+        
+        while q.size():
+
+            # dequeue and this is our current item
+            path = dequeue()
+            # node is the last thing in our path
+            # mark as visited
+
+            # for each edge of the current node
+            ## if it hasn't been visited yet
+            ## make a copy of the path
+            ## add the friend to that path
+            ### put the path to that node in the queue
+
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
